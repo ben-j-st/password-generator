@@ -135,3 +135,25 @@ button[disabled] {
     font-size: 0.8rem;
   }
 }
+
+/* Css i added */
+
+h3 {
+  text-align: center;
+}
+
+#numCharLabel {
+  display:flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.characterAmountNumber {
+  width: 40px;
+}
+
+#character-amount-container {
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
