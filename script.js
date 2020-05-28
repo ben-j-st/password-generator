@@ -1,6 +1,6 @@
 // code to separate strings into arrays 
 var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-var special = specialChar.split('');
+var symbol = specialChar.split('');
 
 var lowerCaseChar = "abcdefghijklmnopqrstuvwxyz";
 var lower = lowerCaseChar.split('')
@@ -17,7 +17,7 @@ var number = numberString.split('')
 // console.log(lower);
 // console.log(number);
 
-console.log(characterNumber)
+
 
 // variables for confirming check boxes
 var lowerChecked = document.getElementById('includeLowercase');
@@ -30,6 +30,10 @@ var generateBtn = document.getElementById("generate")
 
 // variable for accessing text box
 var passwordArea = document.getElementById('password')
+
+// array variables 
+var completeArray = []
+var passArray = [];
 
 // logging check box values
 function consoleLogChecked() {
@@ -61,28 +65,17 @@ function syncCharacterAmount(i) {
     characterRange.value = value
 }
 
+console.log(characterNumber.value)
+
 // code for logging when the button is pressed 
 generateBtn.addEventListener("click", check);
 
 // test variable for counting when button clicked and changing the value of the text area
-var test = 1;
+// var test = 1;
 
-var password = "ive Changed the text area ";
-
-function generatePassword() {
-    for (var i = 0; i < characterNumber.value; i++) {
-        passArray[i] = completeArray[Math.floor(Math.random()*(completeArray.length))];
-        console.log(i)
-   }
-   printPassword();
-}
+// var password = "ive Changed the text area ";
 
 
-function printPassword() {
-    console.log("pushed the button")
-    passwordArea.value = passArray.join('')
-    // passwordArea.value = passArray.join('') + test++
-}
 //  check if checkboxes have been ticked 
 function check() {
     if ((lowerChecked.checked === false) &&
@@ -92,33 +85,62 @@ function check() {
     ) { 
         alert("You must first select at least one checkbox");
     } else {
+        // compiles the array
+        compileArray();
+        // generates a password      
         generatePassword();
     }
   }
 
-// function compileArray() {
+function compileArray() {
+    // Checks for if just lower is ticked 
+    if((lowerChecked.checked === true)){
+        completeArray = lower
+    }
+    // checks for lower and upper
+    else if ((lowerChecked.checked === true) && (upperChecked.checked === true)) {
+        completeArray = lower.concat(upper)
+        console.log("lower Checked.checked & upperChecked.checked is true")
+    } 
+    // checks for lower and number
+    else if ((lowerChecked.checked === true) && (numberChecked.checked === true)) {
+        completeArray = lower.concat(number)
+    }
+    // checks for lower and symbols
+    else if ((lowerChecked.checked === true) && (symbolChecked.checked === true)) {
+        completeArray = lower.concat(symbol)
+    }
 
-// }
-var completeArray = lower;
-var passArray = [];
+    else if ((lowerChecked.checked === true) && 
+    (upperChecked.checked === true)
+    (numberChecked.checked === true)) {
+        completeArray = lower.concat(upper, number);
+    }
+}
 
-console.log("complete array is equal to lower array" +  completeArray)
+function generatePassword() {
+    for (var i = 0; i < characterNumber.value; i++) {
+        passArray[i] = completeArray[Math.floor(Math.random()*(completeArray.length))];
+        console.log(i)
+   }
+    // prints password to screen
+    console.log(completeArray);
+    
+    console.log(passArray);
+    
+   printPassword();
+//    resets complete Array
+   completeArray = [];
+}
 
 
-// var emptyArray = []
+function printPassword() {
+    console.log("pushed the button")
+    passwordArea.value = passArray.join('')
+    // passwordArea.value = passArray.join('') + test++
+}
 
-// if (true) {
-//     completeArray.concat(lower)
-// } 
 
-// if (true) {
-//     completeArray.concat(upper)
-// }
 
-// if (true) {
-//     completeArray.concat(number)
-// }
 
-// if (true) {
-//     completeArray.concat(special)
-// }
+
