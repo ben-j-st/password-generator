@@ -92,97 +92,112 @@ function check() {
     }
   }
 
-// function compileArray() {
-//     // start of single checks
-//     // Checks for if just lower is ticked 
-//     if((lowerChecked.checked === true)){
-//         completeArray = lower;
-//     }
-//     // checks for just upper
-//     else if((upperChecked.checked === true)){
-//         completeArray = upper;
-//     }
-//     // checks for just number
-//     else if((numberChecked.checked === true)){
-//         completeArray = number;
-//     }
-//     // checks for just symbol
-//     else if((symbolChecked.checked === true)){
-//         completeArray = symbol;
-//     }
-//     // start of double checks
-//     // checks for lower and upper
-//     else if ((lowerChecked.checked === true) && (upperChecked.checked === true)) {
-//         completeArray = lower.concat(upper);
-//     } 
-//     // checks for lower and number
-//     else if ((lowerChecked.checked === true) && (numberChecked.checked === true)) {
-//         completeArray = lower.concat(number);
-//     }
-//     // checks for lower and symbols
-//     else if ((lowerChecked.checked === true) && (symbolChecked.checked === true)) {
-//         completeArray = lower.concat(symbol);
-//     }
-//     // checks for upper and number
-//     else if ((upperChecked.checked === true) && (numberChecked.checked === true)) {
-//         completeArray = upper.concat(number);
-//     }
-//     // checks for upper and symbols
-//     else if ((upperChecked.checked === true) && (symbolChecked.checked === true)) {
-//         completeArray = upper.concat(symbol);
-//     }
-//     // checks for number and symbol
-//     else if ((numberChecked.checked === true) && (symbolChecked.checked === true)) {
-//         completeArray = number.concat(symbol);
-//     }
-//     // start of triple checks 
-//     // checks for lower upper number
-//     else if ((lowerChecked.checked === true) && (upperChecked.checked === true) && (numberChecked.checked === true)) {
-//         completeArray = lower.concat(upper, number);
-//     }
-//     // checks for lower upper symbol
-//     else if ((lowerChecked.checked === true) && (upperChecked.checked === true) && (symbol.checked === true)) {
-//         completeArray = lower.concat(upper, symbol);
-//     }
-//     // checks for lower number symbol
-//     else if ((lowerChecked.checked === true) && (numberChecked.checked === true) && (symbolChecked.checked === true)) {
-//         completeArray = lower.concat(number, symbol);
-//     }
-//     // checks for upper number symbol
-//     else if ((upperChecked.checked === true) && (numberChecked.checked === true) && (symbolChecked.checked === true)) {
-//         completeArray = upper.concat(number, symbol);
-//     }
-//     // checks for all
-//     else 
-//     // ((lowerChecked.checked === true) && 
-//     // (upperChecked.checked === true) && 
-//     // (numberChecked.checked === true) &&
-//     // (symbolChecked.checked === true)) 
-//     {
-//         completeArray = lower.concat(upper, number, symbol);
-//     }
-// }
-
-
-function compileArray() {
+function compileArray2() {
     // start of single checks
     // Checks for if just lower is ticked 
     if((lowerChecked.checked === true)){
         completeArray = lower;
     }
     // checks for just upper
-    if((upperChecked.checked === true)){
+    else if((upperChecked.checked === true)){
         completeArray = upper;
     }
     // checks for just number
-    if((numberChecked.checked === true)){
+    else if((numberChecked.checked === true)){
         completeArray = number;
     }
     // checks for just symbol
-    if((symbolChecked.checked === true)){
+    else if((symbolChecked.checked === true)){
         completeArray = symbol;
     }
+    // start of double checks
+    // checks for lower and upper
+    else 
+    // checks for lower and number
+    else if ((lowerChecked.checked === true) && (numberChecked.checked === true)) {
+        completeArray = lower.concat(number);
+    }
+    // checks for lower and symbols
+    else if ((lowerChecked.checked === true) && (symbolChecked.checked === true)) {
+        completeArray = lower.concat(symbol);
+    }
+    // checks for upper and number
+    else if ((upperChecked.checked === true) && (numberChecked.checked === true)) {
+        completeArray = upper.concat(number);
+    }
+    // checks for upper and symbols
+    else if ((upperChecked.checked === true) && (symbolChecked.checked === true)) {
+        completeArray = upper.concat(symbol);
+    }
+    // checks for number and symbol
+    else if ((numberChecked.checked === true) && (symbolChecked.checked === true)) {
+        completeArray = number.concat(symbol);
+    }
+    // start of triple checks 
+    // checks for lower upper number
+    else if ((lowerChecked.checked === true) && (upperChecked.checked === true) && (numberChecked.checked === true)) {
+        completeArray = lower.concat(upper, number);
+    }
+    // checks for lower upper symbol
+    else if ((lowerChecked.checked === true) && (upperChecked.checked === true) && (symbol.checked === true)) {
+        completeArray = lower.concat(upper, symbol);
+    }
+    // checks for lower number symbol
+    else if ((lowerChecked.checked === true) && (numberChecked.checked === true) && (symbolChecked.checked === true)) {
+        completeArray = lower.concat(number, symbol);
+    }
+    // checks for upper number symbol
+    else if ((upperChecked.checked === true) && (numberChecked.checked === true) && (symbolChecked.checked === true)) {
+        completeArray = upper.concat(number, symbol);
+    }
+    // checks for all
+    else 
+    // ((lowerChecked.checked === true) && 
+    // (upperChecked.checked === true) && 
+    // (numberChecked.checked === true) &&
+    // (symbolChecked.checked === true)) 
+    {
+        completeArray = lower.concat(upper, number, symbol);
+    }
 }
+
+function compileArray() {
+    var emptyArray = []
+    //  first checks lower then upper then number then symbol
+    if((lowerChecked.checked === true)){
+        completeArray = emptyArray.concat(lower);
+        if((upperChecked.checked === true)){
+            completeArray = emptyArray.concat(upper);
+            if((numberChecked.checked === true)){
+                completeArray = emptyArray.concat(number);
+               if ((symbolChecked.checked === true)){
+                    completeArray =  emptyArray.concat(symbol);
+                }
+        }
+    }
+    // checks for just upper then checks for number then for symbol
+    else if((upperChecked.checked === true)){
+        completeArray = emptyArray.concat(upper);
+        if((numberChecked.checked === true)){
+            completeArray = emptyArray.concat(number);
+           if ((symbolChecked.checked === true)){
+                completeArray =  emptyArray.concat(symbol);
+            }
+    }
+    }
+    // first check for just number then symbol
+    else if((numberChecked.checked === true)){
+        completeArray = emptyArray.concat(number);
+        if ((symbolChecked.checked === true)){
+            completeArray =  emptyArray.concat(symbol);
+        }
+    }
+    // checks for just symbol
+    else ((symbolChecked.checked === true)){
+        completeArray = emptyArray.concat(symbol);
+    }
+}
+
 
 function generatePassword() {
     for (var i = 0; i < characterNumber.value; i++) {
@@ -196,7 +211,7 @@ function generatePassword() {
     
    printPassword();
 //    resets complete Array
-   completeArray = [];
+   completeArray == [];
     
    // function for copying text to clip board
     // copyToClipboard();
