@@ -93,28 +93,73 @@ function check() {
   }
 
 function compileArray() {
+    // start of single checks
     // Checks for if just lower is ticked 
     if((lowerChecked.checked === true)){
-        completeArray = lower
+        completeArray = lower;
     }
+    // checks for just upper
+    else if((upperChecked.checked === true)){
+        completeArray = upper;
+    }
+    // checks for just number
+    else if((numberChecked.checked === true)){
+        completeArray = number;
+    }
+    // checks for just symbol
+    else if((symbolChecked.checked === true)){
+        completeArray = symbol;
+    }
+    // start of double checks
     // checks for lower and upper
     else if ((lowerChecked.checked === true) && (upperChecked.checked === true)) {
-        completeArray = lower.concat(upper)
-        console.log("lower Checked.checked & upperChecked.checked is true")
+        completeArray = lower.concat(upper);
     } 
     // checks for lower and number
     else if ((lowerChecked.checked === true) && (numberChecked.checked === true)) {
-        completeArray = lower.concat(number)
+        completeArray = lower.concat(number);
     }
     // checks for lower and symbols
     else if ((lowerChecked.checked === true) && (symbolChecked.checked === true)) {
-        completeArray = lower.concat(symbol)
+        completeArray = lower.concat(symbol);
     }
-
-    else if ((lowerChecked.checked === true) && 
-    (upperChecked.checked === true)
-    (numberChecked.checked === true)) {
+    // checks for upper and number
+    else if ((upperChecked.checked === true) && (numberChecked.checked === true)) {
+        completeArray = upper.concat(number);
+    }
+    // checks for upper and symbols
+    else if ((upperChecked.checked === true) && (symbolChecked.checked === true)) {
+        completeArray = upper.concat(symbol);
+    }
+    // checks for number and symbol
+    else if ((numberChecked.checked === true) && (symbolChecked.checked === true)) {
+        completeArray = number.concat(symbol);
+    }
+    // start of triple checks 
+    // checks for lower upper number
+    else if ((lowerChecked.checked === true) && (upperChecked.checked === true) && (numberChecked.checked === true)) {
         completeArray = lower.concat(upper, number);
+    }
+    // checks for lower upper symbol
+    else if ((lowerChecked.checked === true) && (upperChecked.checked === true) && (symbol.checked === true)) {
+        completeArray = lower.concat(upper, symbol);
+    }
+    // checks for lower number symbol
+    else if ((lowerChecked.checked === true) && (numberChecked.checked === true) && (symbolChecked.checked === true)) {
+        completeArray = lower.concat(number, symbol);
+    }
+    // checks for upper number symbol
+    else if ((upperChecked.checked === true) && (numberChecked.checked === true) && (symbolChecked.checked === true)) {
+        completeArray = upper.concat(number, symbol);
+    }
+    // checks for all
+    else 
+    // ((lowerChecked.checked === true) && 
+    // (upperChecked.checked === true) && 
+    // (numberChecked.checked === true) &&
+    // (symbolChecked.checked === true)) 
+    {
+        completeArray = lower.concat(upper, number, symbol);
     }
 }
 
@@ -124,9 +169,9 @@ function generatePassword() {
         console.log(i)
    }
     // prints password to screen
-    console.log(completeArray);
-    
-    console.log(passArray);
+    // testing that array works as intended
+    // console.log(completeArray);
+    // console.log(passArray);
     
    printPassword();
 //    resets complete Array
@@ -136,11 +181,29 @@ function generatePassword() {
 
 function printPassword() {
     console.log("pushed the button")
-    passwordArea.value = passArray.join('')
+    passwordArea.value = passArray.join('');
+    // function for copying text to clip board
+    copyToClipboard();
+    // testing the print function
     // passwordArea.value = passArray.join('') + test++
 }
 
 
+// function to copy text to clipboard
+function copyToClipboard() {
+    /* Get the text field */
+    var copyText = document.getElementById("password");
+  
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+  
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+  
+    /* Alert the copied text */
+    alert("Copied the text: " + copyText.value);
+  }
 
 
 
