@@ -18,5 +18,5 @@ Once the user has made their choices and presses the Generate buttons, the javas
 I would like to work on a few more things for this eventually, such as tooltips for when the user hovers over certain items to either tell them what it does or in the case of the slider what the minimum and maximum values are. I would also like to improve upon my solution of multiple nested if and else if statements to check what commands the user has entered  
  
 ## Website Preview
- ![Website preview](images/passwordGenerator.jpg”)
+ ![Website preview](images/passwordGenerator.JPG”)
 https://ben-j-st.github.io/password-generator/
